@@ -25,16 +25,30 @@
   @keyframes sb-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
   @keyframes sb-pop{from{opacity:0;transform:translate(-50%,6px) scale(.96)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
   @keyframes sb-wave{0%,100%{transform:scaleY(.45)}50%{transform:scaleY(1)}}
+
+  /* --- Cadre : maquette sur desktop, plein écran sur mobile --- */
+  html,body{height:100%}
+  .sb-stage{min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:20px;font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:radial-gradient(120% 90% at 50% 0%,#124635 0%,#08211A 70%)}
+  .sb-phone{width:min(400px,100%);height:min(848px,calc(100vh - 40px));background:#13150F;border-radius:44px;padding:9px;box-shadow:0 40px 90px -24px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.07)}
+  .sb-screen{width:100%;height:100%;background:#F7F6F2;border-radius:36px;overflow:hidden;display:flex;flex-direction:column;position:relative;color:#1A1610}
+  .sb-statusbar{height:44px;display:flex;justify-content:space-between;align-items:flex-end;padding:0 26px 7px;flex-shrink:0;font-size:13px;font-weight:600;letter-spacing:-0.01em}
+  @media (max-width:600px){
+    body{background:#F7F6F2}
+    .sb-stage{padding:0;align-items:stretch;background:#F7F6F2}
+    .sb-phone{width:100%;height:100vh;height:100dvh;border-radius:0;padding:0;box-shadow:none}
+    .sb-screen{border-radius:0;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}
+    .sb-statusbar{display:none}
+  }
 </style>
 
 </head>
 <body>
 <div id="dc-root"></div>
-<script id="dc-template" type="text/x-template"><div style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:radial-gradient(120% 90% at 50% 0%,#124635 0%,#08211A 70%)">
-<div style="width:min(400px,100%);height:min(848px,calc(100vh - 40px));background:#13150F;border-radius:44px;padding:9px;box-shadow:0 40px 90px -24px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.07)">
-<div style="width:100%;height:100%;background:#F7F6F2;border-radius:36px;overflow:hidden;display:flex;flex-direction:column;position:relative;color:#1A1610">
+<script id="dc-template" type="text/x-template"><div class="sb-stage">
+<div class="sb-phone">
+<div class="sb-screen">
 
-  <div style="height:44px;display:flex;justify-content:space-between;align-items:flex-end;padding:0 26px 7px;flex-shrink:0;font-size:13px;font-weight:600;letter-spacing:-0.01em">
+  <div class="sb-statusbar">
     <span>9:41</span>
     <div style="display:flex;align-items:center;gap:6px">
       <span style="font-size:11px;font-weight:700">5G</span>
